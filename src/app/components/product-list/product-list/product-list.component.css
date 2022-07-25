@@ -1,0 +1,21 @@
+.product-index {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-bottom: 2%;
+    align-content: center;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    background: white;
+    box-shadow: 0 0 11.1px 3px #c6b7b738;
+} 
+
+.product-container {
+    display: flex;
+    margin: 2%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+}

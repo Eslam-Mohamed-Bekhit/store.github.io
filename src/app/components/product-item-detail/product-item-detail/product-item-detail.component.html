@@ -1,1 +1,34 @@
-<p>product-item-detail works!</p>
+<div class="container">
+    <!-- loop on properties on Object from the observable with Async Pipe  -->
+    <div *ngIf="myData$ | async as item "  class="product-container">
+        <div class="alignCenter" >
+            <img class="imageClass" [src]="item.url" width="60%" height="60%">
+        </div>
+        <p class="textBoldSpacing">{{item.name}}</p>
+        <p>{{item.description}}</p>
+        <p class="price">{{item.price | currency}}</p>
+        <form class="flexForm" #ngForm="ngForm" (ngSubmit)="addToCart(item,ngForm)">
+        <!-- input to add amount  -->
+        <input #name="ngModel" name ="amoutn" ngModel type="number" [(ngModel)]="amount" 
+        (ngModelChange)="alertChange()"  requierd min="1" max="20"  pattern="[0-9]+$">
+        <!-- button to trigger function Add to card -->
+
+        <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['required']"> this Field is required</span>
+        <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['min']"> this Field must be greater than 0</span>
+        <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['max']"> this Field must be less than 20</span>
+        <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['pattern']"> this Field must be less than 20</span>
+
+        <button [ngClass]="{
+            'buttonDisabled':ngForm.invalid,
+            'button':ngForm.valid
+        }" [disabled]="ngForm.invalid">add to Cart</button>
+        </form>
+    </div>
+
+    <!-- button to navigate to products list  -->
+    <div class="button-container">
+        <button class="button-back" (click)='navigate()'> &larr;
+            back to products list </button>
+    </div>
+  
+</div>

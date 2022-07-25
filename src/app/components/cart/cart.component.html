@@ -1,0 +1,92 @@
+
+<!------------------------------------------------------------------------------------------------
+------------------------------------ Cart Items Section ------------------------------------------
+------------------------------------------------------------------------------------------------>
+<div class="alert" *ngIf="!data.length"> No Items On the Cart </div>
+    <div *ngIf="data.length" class="container">
+      <div class="CarItemsContainer">
+        <div class="cartItmes" *ngFor="let item of data ; index as index">
+            <div><img class="imageClass" [src]="item.url"></div>
+            <p class="textBoldSpacing">{{item.name}}</p>
+            <p class="price textBoldSpacing">Price:{{item.price * item.amount | currency : 'USD' : 'symbol' :'1.2-2' }}
+            </p>
+
+        <!-- Form to Edit quantity --> 
+         <form class="flexForm" #ngForm="ngForm">
+                <input  #name="ngModel" name ="amount" 
+                        ngModel type="number" [(ngModel)]="item.amount" 
+                        (ngModelChange)="TotalCalc(index,item.amount)"  
+                        requierd min="1" max="20"  pattern="[0-9]+$">
+                <!-- handel errors -->
+        
+                <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['required']">  Field  required</span>
+                <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['min']"> must be greater than 0</span>
+                <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['max']"> must be less than 20</span>
+                <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['pattern']"> must be less than 20</span>
+        
+        
+            </form>
+
+            <!-- Delete Button -->
+            <button class="deleteItem" (click)="deleteItemFromCart(index)">&#10006;</button>
+        </div>
+        <div class="total" *ngIf="data.length">total : {{total | currency : 'USD' : 'symbol' :'1.2-2'}} </div>
+        <button class="buttonDelete" (click)="deleteAll()"> Delete all</button>
+
+    </div>
+
+<!------------------------------------------------------------------------------------------------
+------------------------------------ Form Section ------------------------------------------
+------------------------------------------------------------------------------------------------>
+
+    <div class="formContainerParent" *ngIf="data.length">
+    
+        <form class="formContainer" #ngForm="ngForm" (ngSubmit)="onSubmit(ngForm)">
+    
+             <!-- Name Input -->
+
+            <!--  Name Input with Validators Required , Minlength , Patrern(string) -->
+            <input #name="ngModel" name="name" minlength="6" ngModel placeholder="full name min(6 charchter)"
+                type="text" required pattern="[a-zA-Z]+$">
+            
+            <!-- Name Input Handel Errors -->
+            <span class="error" *ngIf="name.touched && name.errors?.['pattern']"> you can enter just string not allow
+                number</span>
+            <span class="error" *ngIf="name.touched && name.errors?.['required']"> this field is required</span>
+            <span class="error" *ngIf="name.touched && name.errors?.['minlength']">
+                {{ 'you enter ' + name.errors?.['minlength']?.['actualLength'] +
+                ' but you must enter ' + name.errors?.['minlength']?.['requiredLength']}}
+            </span>
+
+            <!-- Address Input -->
+
+            <!--  Address Input with Required Validate -->
+            <input #address="ngModel" name="address" ngModel placeholder="address" type="text" required>
+            <!-- Handel Address Input Errors -->
+            <span class="error" *ngIf="address.touched && address.errors?.['required']"> this field is required</span>
+            
+            <!-- Credit Input -->
+            
+            <!--  Credit Input with Validators Required and Pattern(Numbers) and Minlength,Maxlength (16number)  -->
+            <input #credit="ngModel" name="credit" ngModel placeholder="CreditCardNumber" type="text" maxlength="16"
+                minlength="16" required pattern="[0-9]+$">
+            <!-- Handel Credit Input Errors -->
+            <span class="error" *ngIf="credit.touched && credit.errors?.['required']"> this field is required</span>
+            <span class="error" *ngIf="credit.touched && credit.errors?.['pattern']"> this field is must number</span>
+            <span class="error" *ngIf="credit.touched && credit.errors?.['minlength']"> this field must be 16
+                number</span>
+            <span class="paymentDetail">* We'll never share your payment details with anyone else</span>
+            
+            
+            <!-- Submit button with Class Directive -->
+            <button [ngClass]="{
+                    'button':ngForm.valid,
+                    'buttonDisabled':ngForm.invalid }" [disabled]="ngForm.invalid">
+                submit
+            </button>
+
+        </form>
+    </div>
+
+
+</div>

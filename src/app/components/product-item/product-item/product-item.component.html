@@ -1,1 +1,28 @@
-<p>product-item works!</p>
+    <div class="container">
+        <!-- wrap image with anchor with RouterLink , 
+        when you click on Image the Roter convert you to Item page with Id param for this Itme -->
+        <a [routerLink]="['item',item?.id]" >
+            <img class="imageClass" [src]="item?.url" width="150" height="150">
+           </a>
+
+           <p class="textBoldSpacing"> {{item?.name}}</p>
+           <p class="textBoldSpacing price">{{item?.price | currency}}  </p>
+      
+
+        <form class="flexForm" #ngForm="ngForm" (ngSubmit)="addToCart()">
+            <!-- input to add amount  -->
+            <input #name="ngModel" name ="amount" ngModel type="number" [(ngModel)]="amount" (ngModelChange)="alertChange()" requierd min="1" max="20"  pattern="[0-9]+$">
+            <!-- button to trigger function Add to card -->
+    
+            <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['required']">  Field  required</span>
+            <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['min']"> must be greater than 0</span>
+            <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['max']"> must be less than 20</span>
+            <span class="alertForm" *ngIf="ngForm.touched && name.errors?.['pattern']"> must be less than 20</span>
+    
+            <button [ngClass]="{
+                'buttonDisabled':ngForm.invalid,
+                'button':ngForm.valid
+            }" [disabled]="ngForm.invalid">add to Cart</button>
+            </form>
+    </div>
+  

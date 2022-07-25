@@ -1,0 +1,22 @@
+h1{
+    color: #0eb406;
+    font-size: 300%;
+    margin: 2%;
+    letter-spacing: 5px;
+}
+p{
+    margin: 1%;
+}
+.button{
+    border: none;
+    background: #0a5a55;
+    color: white;
+    padding: 1%;
+    flex: 1;
+    min-width: 35%;
+    border-radius: 5px;
+    font-size: 97%;
+    box-shadow: 0px 8px 9px 2px #0a5a5591;
+    margin: 6% 2% 2% 2%;
+    cursor: pointer;   
+}

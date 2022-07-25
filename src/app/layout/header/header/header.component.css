@@ -1,0 +1,41 @@
+.container{
+    user-select:none;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    background: #0a5a55;
+    margin-bottom: 5%;
+
+}
+.header{
+    color: cyan;
+    letter-spacing: 0.2em;
+    font-family: fangsong;
+    font-weight: 500;
+    text-shadow: 0 0 10px white;
+    font-size: 353%;
+}
+.nav{
+    margin: 0.2%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 0.3%;
+    width:100%
+}
+.nav-link{
+    padding: 0.9%;
+    margin: 1%;
+    list-style-type: none;
+}
+a.nav-anchor{
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+}
+

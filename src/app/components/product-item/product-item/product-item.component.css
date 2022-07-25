@@ -1,0 +1,79 @@
+.container{
+    user-select: none;
+    padding: 1em;
+    display: flex;
+    user-select: none;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+.imageClass{
+    margin-bottom: 11%;
+    border-radius: 5%;
+    box-shadow: 0 0 11px 1px #0000002b;
+}
+.textBoldSpacing{
+    font-weight: 600;
+    padding: 2%;
+    margin-bottom: 2%;
+    letter-spacing: 2px;
+}
+.price{
+    font-style: italic;
+    color: #0a5a55;
+}
+
+input[type=number]
+{
+    margin: 4%;
+    padding: 2%;
+    outline: none;
+}
+
+.button{
+    border: none;
+    background: #0a5a55;
+    color: white;
+    padding: 4%;
+    flex: 1;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 97%;
+    box-shadow: 0px 8px 9px 2px #0a5a5591;
+    margin: 6% 2% 2% 2%;
+    cursor:pointer;    
+}
+
+.buttonDisabled {
+    border: none;
+    background: #0b807893;
+    color: white;
+    padding: 4%;
+    flex: 1;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 97%;
+    box-shadow: 0px 8px 9px 2px #0a5a5591;
+    margin: 6% 2% 2% 2%;
+    cursor: pointer;
+}
+
+.flexForm {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    flex: 1;
+    width: 80%;
+    align-items: center;
+    margin: 1%;
+    padding: 2%;
+}
+
+.alertForm {
+    font-size: 70%;
+    color: red;
+    text-align: center;}

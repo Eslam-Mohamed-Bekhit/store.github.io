@@ -1,1 +1,6 @@
-<p>product-list works!</p>
+<div class="product-container">
+
+    <app-product-item class="product-index" *ngFor="let item of data$ | async; index as i;" [item]="item"
+        (setItem)="addToCart($event)"></app-product-item>
+
+</div>
